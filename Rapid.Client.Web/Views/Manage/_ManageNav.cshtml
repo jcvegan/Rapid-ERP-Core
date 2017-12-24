@@ -1,5 +1,5 @@
-﻿@using Rapid.Client.Web.Views.Manage
-@inject SignInManager<ApplicationUser> SignInManager
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Rapid.Data.Model.Security.ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

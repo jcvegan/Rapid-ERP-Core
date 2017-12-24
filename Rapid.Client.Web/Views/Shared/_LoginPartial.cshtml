@@ -1,8 +1,9 @@
 @using Microsoft.AspNetCore.Identity
 @using Rapid.Client.Web.Models
+@using Rapid.Data.Model.Security
 
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<Rapid.Data.Model.Security.ApplicationUser> SignInManager
+@inject UserManager<Rapid.Data.Model.Security.ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

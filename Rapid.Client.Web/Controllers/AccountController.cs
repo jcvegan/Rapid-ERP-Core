@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using Rapid.Client.Web.Models;
 using Rapid.Client.Web.Models.AccountViewModels;
 using Rapid.Client.Web.Services;
+using Rapid.Data.Model.Security;
 
 namespace Rapid.Client.Web.Controllers
 {
@@ -220,7 +221,7 @@ namespace Rapid.Client.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName =  model.LastName, CreatedDate = DateTime.UtcNow };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using Rapid.Client.Web.Models;
 using Rapid.Client.Web.Models.ManageViewModels;
 using Rapid.Client.Web.Services;
+using Rapid.CrossCutting.Service.Definition.Data;
+using Rapid.Data.Model.Security;
 
 namespace Rapid.Client.Web.Controllers
 {
@@ -23,6 +25,7 @@ namespace Rapid.Client.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
+        private readonly IDocumentTypeManagementService _documentTypeManagementService;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
 
@@ -33,13 +36,15 @@ namespace Rapid.Client.Web.Controllers
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder,
+            IDocumentTypeManagementService documentTypeManagementService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            _documentTypeManagementService = documentTypeManagementService;
         }
 
         [TempData]
